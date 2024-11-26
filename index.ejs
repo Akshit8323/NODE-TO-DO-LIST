@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #b5cdf5;
+    color: black;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: black    ;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+form input[type="text"], form input[type="time"] {
+    width: 50%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+form button {
+    background-color: #060509;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #dfeddf;
+}
+
+table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    margin-top: 30px;
+    background-color: #fff;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #c3c4c3;
+    color: black;
+}
+
+table td {
+    font-size: 16px;
+}
+
+table tr:hover {
+    background-color: #f2f2f2;
+}
+
+button a {
+    text-decoration: none;
+    color: white;
+}
+
+button {
+    background-color: #f23124;
+    padding: 5px 15px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 0 5px;
+}
+
+button a:hover {
+    color: white;
+}
+
+form input[type="text"] {
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+form input[type="text"]:focus {
+    border: 1px solid #c3c4c3;
+}
+
+
+
+form button {
+    background-color: #c3c4c3;
+    color: black;
+    border: 1px solid black;
+}
+
+form button:hover {
+    background-color: black;
+    transition: 1s;
+    color: white;
+}
+</style>
+<body>
+    <h1>Welcome To My TO-DO List.</h1>
+    <form action="/addTask" method="post">
+        <input type="text" placeholder="Enter Task" name="task" required/>
+        <input type="time" placeholder="Enter Time" name="time" required/>
+        <button type="submit">Add Task</button>
+    </form>
+
+    <table border="1" width="50%">
+        <tr>
+            <th>ID</th>
+            <th>Task</th>
+            <th>Time</th>
+            <th style="text-align: center;">Action</th>
+        </tr>
+        <% tasks.map((task) => { %>
+        <tr style="text-align: center;">
+            <td><%= task.id %></td>
+            <td><%= task.task %></td>
+            <td><%= task.time %></td>
+            <td>
+                <button><a href="/editTask/<%= task.id %>">Edit</a></button>
+                <button><a href="/deleteTask?id=<%= task.id %>">Delete</a></button>
+            </td>
+        </tr>
+        <% }) %>
+    </table>
+</body>
+</html>
